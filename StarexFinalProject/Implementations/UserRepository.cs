@@ -13,8 +13,14 @@ namespace StarexFinalProject.Implementations
 {
     public class UserRepository : IUserRepository
     {
-       
-        public IdentityResult Create(UserViewModel userViewModel)
+        private readonly UserManager<AppUsers> _userManager;
+        private readonly SignInManager<AppUsers> _signInManager;
+        public UserRepository(UserManager<AppUsers> userManager, SignInManager<AppUsers> signInManager)
+        {
+            _userManager = userManager;
+            _signInManager = signInManager;
+        }
+        public async Task<IdentityResult> Create(UserViewModel userViewModel)
         {
             AppUsers users = new AppUsers()
             {
@@ -29,22 +35,32 @@ namespace StarexFinalProject.Implementations
                 GovId=userViewModel.GovId,
                 FIN=userViewModel.FIN
             };
-            
+            return await _userManager.CreateAsync(users);
+     
         }
 
-        public UserViewModel GetById(string id)
+        public async Task<UserViewModel> GetById(string id)
         {
-            throw new NotImplementedException();
+           var AppUserResult= await _userManager.FindByIdAsync(id);
+            UserViewModel userViewModel = new UserViewModel
+            {
+                 Adress=AppUserResult.Adress,
+                 
+            };
+            return await Task.FromResult(userViewModel);
         }
 
-        public SignInResult Login(LoginViewModel loginViewModel)
+        public async Task<SignInResult> Login(LoginViewModel loginViewModel)
         {
-            throw new NotImplementedException();
+            SignInResult signInResult=null;
+            var resultUser = await _userManager.FindByEmailAsync(loginViewModel.Email);
+            if (resultUser!=null)
+            {
+                signInResult= await _signInManager.PasswordSignInAsync(resultUser, loginViewModel.Password, true, true);
+            }
+            return signInResult;
         }
 
-        SignInResult IUserRepository.Login(LoginViewModel loginViewModel)
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }

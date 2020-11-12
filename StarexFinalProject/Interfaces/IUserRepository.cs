@@ -10,8 +10,8 @@ namespace StarexFinalProject.Interfaces
 {
     public  interface IUserRepository
     {
-        IdentityResult Create(UserViewModel userViewModel);
-        SignInResult  Login(LoginViewModel loginViewModel);
-        UserViewModel GetById(string id);
+        Task<IdentityResult> Create(UserViewModel userViewModel);
+        Task<SignInResult>  Login(LoginViewModel loginViewModel);
+        Task<UserViewModel> GetById(string id);
     }
 }
