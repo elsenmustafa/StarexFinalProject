@@ -16,7 +16,7 @@ namespace StarexFinal.Models
         public string Gender { get; set; }
         public DateTime BirthDate { get; set; }
         public string Adress { get; set; }
-        public string WareHousesId { get; set; }
+        public int WareHousesId { get; set; }
         public string GovIdPrefix { get; set; }
         public string GovId { get; set; }
         public string FIN { get; set; }

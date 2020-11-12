@@ -31,7 +31,6 @@ namespace StarexFinalProject.Controllers
             this.dbContext = _dbcontext;
             this._userRepository = userRepository;
         }
-
         public IActionResult Register()
         {
             ViewBag.Warehouse = dbContext.Warehouse.Select(
@@ -43,25 +42,26 @@ namespace StarexFinalProject.Controllers
             return View();
         }
         [HttpPost]
-        public  IActionResult Register(UserViewModel userViewModel)
+        public  async Task<IActionResult> Register(UserViewModel userViewModel)
         {
-            //ViewBag.Warehouses = dbContext.Warehouse.Select(
-            //    c => new SelectListItem()
-            //    {
-            //        Text = c.Adress,
-            //        Value = c.Id.ToString()
-            //    }).ToList();
-            //return View();
             if (ModelState.IsValid)
             {
-                var result = _userRepository.Create(userViewModel);
+               var result= await _userRepository.Create(userViewModel);
                 if (result.Succeeded)
                 {
                     return RedirectToAction("Index", "Home");
                 }
+                else
+                {
+                    foreach (var error in result.Errors)
+                    {
+                        ModelState.AddModelError("", error.Description);
+                    }
+                }
             }
-
             return View();
+        
         }
+        
     }
 }

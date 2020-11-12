@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace StarexFinalProject.Migrations
 {
-    public partial class first : Migration
+    public partial class fist_tes : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -159,21 +159,20 @@ namespace StarexFinalProject.Migrations
                     Gender = table.Column<string>(nullable: true),
                     BirthDate = table.Column<DateTime>(nullable: false),
                     Adress = table.Column<string>(nullable: true),
-                    WareHouseId = table.Column<string>(nullable: true),
+                    WareHousesId = table.Column<int>(nullable: false),
                     GovIdPrefix = table.Column<string>(nullable: true),
                     GovId = table.Column<string>(nullable: true),
-                    FIN = table.Column<string>(nullable: true),
-                    WarehouseId = table.Column<int>(nullable: true)
+                    FIN = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_AspNetUsers_Warehouse_WarehouseId",
-                        column: x => x.WarehouseId,
+                        name: "FK_AspNetUsers_Warehouse_WareHousesId",
+                        column: x => x.WareHousesId,
                         principalTable: "Warehouse",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -379,105 +378,6 @@ namespace StarexFinalProject.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.InsertData(
-                table: "Countries",
-                columns: new[] { "Id", "Name" },
-                values: new object[,]
-                {
-                    { 1, "USA" },
-                    { 2, "Turkey" },
-                    { 3, "China" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "Currencies",
-                columns: new[] { "Id", "Name" },
-                values: new object[,]
-                {
-                    { 1, "USD" },
-                    { 2, "TRY" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "DeclarationsStatuses",
-                columns: new[] { "Id", "Name" },
-                values: new object[,]
-                {
-                    { 5, "delivered" },
-                    { 4, "inLocalWarehouse" },
-                    { 3, "onTheWay" },
-                    { 2, "inForeignWarehouse" },
-                    { 1, "declared" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "OnlineFormCategories",
-                columns: new[] { "Id", "Name" },
-                values: new object[,]
-                {
-                    { 11, "Digər" },
-                    { 10, "Təklif və iradlar" },
-                    { 8, "Geri qaytarilma" },
-                    { 7, "Tapılmayan bağlama" },
-                    { 6, "Yanlış gələn sifariş" },
-                    { 5, "Bağlamanın gecikməsi" },
-                    { 4, "Sifarişin alınması" },
-                    { 3, "Hesabımda mənə məxsus olmayan bağlama" },
-                    { 2, "Tapılmayan bağlama" },
-                    { 1, "Sifariş haqqında məlumat" },
-                    { 9, "Balansla bağlı" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "OrderStatus",
-                columns: new[] { "Id", "Name" },
-                values: new object[,]
-                {
-                    { 3, "ordered" },
-                    { 4, "deleted" },
-                    { 1, "unpaid" },
-                    { 2, "paid" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "Products",
-                columns: new[] { "Id", "CountryId", "ProductType" },
-                values: new object[,]
-                {
-                    { 20, 2, "Elektronik" },
-                    { 19, 2, "Gida" },
-                    { 18, 2, "Canta" },
-                    { 17, 2, "Ev dekorasyon" },
-                    { 16, 2, "Cilt bakim" },
-                    { 15, 2, "Erkek giyim" },
-                    { 14, 2, "Kadin giyim" },
-                    { 13, 2, "Bebek giyim" },
-                    { 11, 2, "Aksesuar" },
-                    { 12, 2, "Ayakkabi" },
-                    { 9, 1, "Home & Kitchen" },
-                    { 8, 1, "Clothing, Shoes & Jewelry" },
-                    { 7, 1, "Electronics" },
-                    { 6, 1, "Books" },
-                    { 5, 1, "Beauty & Personal Care" },
-                    { 4, 1, "Baby" },
-                    { 3, 1, "Apps & Games" },
-                    { 2, 1, "Appliances" },
-                    { 1, 1, "Accsessuar" },
-                    { 10, 1, "Garden & Outdoor" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "Warehouse",
-                columns: new[] { "Id", "Adress" },
-                values: new object[,]
-                {
-                    { 4, "SUMQAYIT: (Bakı küçəsi 107, Aviakassanın yanı)" },
-                    { 1, "BAKI - Gənclik: (Atatürk prospekti, 4A, Gənclik metrosunun yanı)" },
-                    { 2, "BAKI - Xalqlar Dostluğu: (Xətai rayonu, Məhəmməd Hadi küçəsi 2)" },
-                    { 3, "BAKI - İnşaatçılar: (Şərifzadə küçəsi 174)" },
-                    { 5, "GƏNCƏ: (Nəriman Nərimanov küçəsi 298F, Köhnə Yevlax avtovağzalı ilə üzbəüz)" }
-                });
-
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -518,9 +418,9 @@ namespace StarexFinalProject.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_AspNetUsers_WarehouseId",
+                name: "IX_AspNetUsers_WareHousesId",
                 table: "AspNetUsers",
-                column: "WarehouseId");
+                column: "WareHousesId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Declarations_AppUsersId",
