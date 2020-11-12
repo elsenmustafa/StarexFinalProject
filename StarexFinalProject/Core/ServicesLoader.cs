@@ -15,7 +15,7 @@ namespace StarexFinalProject.Core
 {
     public static class ServicesLoader
     {
-       public static void Load(this IServiceCollection services)
+        public static void Load(this IServiceCollection services)
         {
             services.AddScoped<IUserRepository, UserRepository>();
         }
@@ -26,18 +26,10 @@ namespace StarexFinalProject.Core
 
             services.AddDbContext<StarexDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("StarexProject")));
 
+            services.AddDbContext<StarexDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("StarexProject")));
             services.AddIdentity<AppUsers, IdentityRole>()
-                .AddEntityFrameworkStores<StarexDbContext>();
-            //services.Load();
-            services.AddIdentity<AppUsers, IdentityRole>(
-               options =>
-               {
-
-                   //option.Password.RequireUppercase = false;
-                   //option.Password.RequireNonAlphanumeric = false;
-
-
-               }).AddEntityFrameworkStores<StarexDbContext>().AddDefaultTokenProviders();
+                .AddEntityFrameworkStores<StarexDbContext>()
+                .AddDefaultTokenProviders();
 
         }
     }
