@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using StarexFinal.Models;
 using StarexFinalProject.Contexts;
+using StarexFinalProject.Core;
 
 namespace StarexFinalProject
 {
@@ -27,16 +28,7 @@ namespace StarexFinalProject
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddDbContext<StarexDbContext>(x => x.UseSqlServer(Configuration.GetConnectionString("StarexProject")));
-            services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<StarexDbContext>();
-            services.AddIdentity<AppUsers, IdentityRole>(
-               option =>
-               {
-                   option.Password.RequireUppercase = false;
-                   option.Password.RequireNonAlphanumeric = false;
-
-
-               }).AddEntityFrameworkStores<StarexDbContext>();
+            services.CreateIdentity(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -54,7 +46,10 @@ namespace StarexFinalProject
 
             app.UseRouting();
 
+            app.UseAuthentication();
+
             app.UseAuthorization();
+
 
             app.UseEndpoints(endpoints =>
             {

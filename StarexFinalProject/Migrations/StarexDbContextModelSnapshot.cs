@@ -163,23 +163,6 @@ namespace StarexFinalProject.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Countries");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Name = "USA"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Name = "Turkey"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Name = "China"
-                        });
                 });
 
             modelBuilder.Entity("StarexFinal.Data.Declarations", b =>
@@ -255,63 +238,6 @@ namespace StarexFinalProject.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("OnlineFormCategories");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Name = "Sifariş haqqında məlumat"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Name = "Tapılmayan bağlama"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Name = "Hesabımda mənə məxsus olmayan bağlama"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Name = "Sifarişin alınması"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Name = "Bağlamanın gecikməsi"
-                        },
-                        new
-                        {
-                            Id = 6,
-                            Name = "Yanlış gələn sifariş"
-                        },
-                        new
-                        {
-                            Id = 7,
-                            Name = "Tapılmayan bağlama"
-                        },
-                        new
-                        {
-                            Id = 8,
-                            Name = "Geri qaytarilma"
-                        },
-                        new
-                        {
-                            Id = 9,
-                            Name = "Balansla bağlı"
-                        },
-                        new
-                        {
-                            Id = 10,
-                            Name = "Təklif və iradlar"
-                        },
-                        new
-                        {
-                            Id = 11,
-                            Name = "Digər"
-                        });
                 });
 
             modelBuilder.Entity("StarexFinal.Data.Orders", b =>
@@ -447,10 +373,7 @@ namespace StarexFinalProject.Migrations
                         .HasColumnType("nvarchar(256)")
                         .HasMaxLength(256);
 
-                    b.Property<string>("WareHouseId")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("WarehouseId")
+                    b.Property<int>("WareHousesId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -463,7 +386,7 @@ namespace StarexFinalProject.Migrations
                         .HasName("UserNameIndex")
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
-                    b.HasIndex("WarehouseId");
+                    b.HasIndex("WareHousesId");
 
                     b.ToTable("AspNetUsers");
                 });
@@ -482,33 +405,6 @@ namespace StarexFinalProject.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("DeclarationsStatuses");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Name = "declared"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Name = "inForeignWarehouse"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Name = "onTheWay"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Name = "inLocalWarehouse"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Name = "delivered"
-                        });
                 });
 
             modelBuilder.Entity("StarexFinal.Models.UserBalance", b =>
@@ -550,18 +446,6 @@ namespace StarexFinalProject.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Currencies");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Name = "USD"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Name = "TRY"
-                        });
                 });
 
             modelBuilder.Entity("StarexFinalProject.Models.OrderStatus", b =>
@@ -578,28 +462,6 @@ namespace StarexFinalProject.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("OrderStatus");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Name = "unpaid"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Name = "paid"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Name = "ordered"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Name = "deleted"
-                        });
                 });
 
             modelBuilder.Entity("StarexFinalProject.Models.Product", b =>
@@ -619,128 +481,6 @@ namespace StarexFinalProject.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Products");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CountryId = 1,
-                            ProductType = "Accsessuar"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            CountryId = 1,
-                            ProductType = "Appliances"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            CountryId = 1,
-                            ProductType = "Apps & Games"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            CountryId = 1,
-                            ProductType = "Baby"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            CountryId = 1,
-                            ProductType = "Beauty & Personal Care"
-                        },
-                        new
-                        {
-                            Id = 6,
-                            CountryId = 1,
-                            ProductType = "Books"
-                        },
-                        new
-                        {
-                            Id = 7,
-                            CountryId = 1,
-                            ProductType = "Electronics"
-                        },
-                        new
-                        {
-                            Id = 8,
-                            CountryId = 1,
-                            ProductType = "Clothing, Shoes & Jewelry"
-                        },
-                        new
-                        {
-                            Id = 9,
-                            CountryId = 1,
-                            ProductType = "Home & Kitchen"
-                        },
-                        new
-                        {
-                            Id = 10,
-                            CountryId = 1,
-                            ProductType = "Garden & Outdoor"
-                        },
-                        new
-                        {
-                            Id = 11,
-                            CountryId = 2,
-                            ProductType = "Aksesuar"
-                        },
-                        new
-                        {
-                            Id = 12,
-                            CountryId = 2,
-                            ProductType = "Ayakkabi"
-                        },
-                        new
-                        {
-                            Id = 13,
-                            CountryId = 2,
-                            ProductType = "Bebek giyim"
-                        },
-                        new
-                        {
-                            Id = 14,
-                            CountryId = 2,
-                            ProductType = "Kadin giyim"
-                        },
-                        new
-                        {
-                            Id = 15,
-                            CountryId = 2,
-                            ProductType = "Erkek giyim"
-                        },
-                        new
-                        {
-                            Id = 16,
-                            CountryId = 2,
-                            ProductType = "Cilt bakim"
-                        },
-                        new
-                        {
-                            Id = 17,
-                            CountryId = 2,
-                            ProductType = "Ev dekorasyon"
-                        },
-                        new
-                        {
-                            Id = 18,
-                            CountryId = 2,
-                            ProductType = "Canta"
-                        },
-                        new
-                        {
-                            Id = 19,
-                            CountryId = 2,
-                            ProductType = "Gida"
-                        },
-                        new
-                        {
-                            Id = 20,
-                            CountryId = 2,
-                            ProductType = "Elektronik"
-                        });
                 });
 
             modelBuilder.Entity("StarexFinalProject.Models.Warehouse", b =>
@@ -757,33 +497,6 @@ namespace StarexFinalProject.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Warehouse");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Adress = "BAKI - Gənclik: (Atatürk prospekti, 4A, Gənclik metrosunun yanı)"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Adress = "BAKI - Xalqlar Dostluğu: (Xətai rayonu, Məhəmməd Hadi küçəsi 2)"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Adress = "BAKI - İnşaatçılar: (Şərifzadə küçəsi 174)"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Adress = "SUMQAYIT: (Bakı küçəsi 107, Aviakassanın yanı)"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Adress = "GƏNCƏ: (Nəriman Nərimanov küçəsi 298F, Köhnə Yevlax avtovağzalı ilə üzbəüz)"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -873,9 +586,11 @@ namespace StarexFinalProject.Migrations
 
             modelBuilder.Entity("StarexFinal.Models.AppUsers", b =>
                 {
-                    b.HasOne("StarexFinalProject.Models.Warehouse", "Warehouse")
+                    b.HasOne("StarexFinalProject.Models.Warehouse", "Warehouses")
                         .WithMany("appUsers")
-                        .HasForeignKey("WarehouseId");
+                        .HasForeignKey("WareHousesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("StarexFinal.Models.UserBalance", b =>
