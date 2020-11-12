@@ -45,6 +45,16 @@ namespace StarexFinalProject.Implementations
             UserViewModel userViewModel = new UserViewModel
             {
                  Adress=AppUserResult.Adress,
+                 Name=AppUserResult.Name,
+                 Email=AppUserResult.Email,
+                 Surname=AppUserResult.Surname,
+                 BirthDate=AppUserResult.BirthDate,
+                 FIN=AppUserResult.FIN,
+                 Gender=AppUserResult.Gender,
+                 GovId=AppUserResult.GovId,
+                 GovIdPrefix=AppUserResult.GovIdPrefix,
+                 Password=AppUserResult.PasswordHash,
+                 
                  
             };
             return await Task.FromResult(userViewModel);
@@ -61,6 +71,10 @@ namespace StarexFinalProject.Implementations
             return signInResult;
         }
 
-        
+      
+
+       
+
+       
     }
 }
