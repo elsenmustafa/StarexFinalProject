@@ -21,9 +21,6 @@ namespace StarexFinalProject.Core
         }
         public static void CreateIdentity(this IServiceCollection services, IConfiguration Configuration)
         {
-
-
-
             services.AddDbContext<StarexDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("StarexProject")));
 
             services.AddDbContext<StarexDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("StarexProject")));

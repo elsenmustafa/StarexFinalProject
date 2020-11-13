@@ -1,8 +1,8 @@
 ﻿@model StarexFinal.ViewModels.UserViewModel
 
-@*@{ ViewData["Title"] = "Register";
+@{ ViewData["Title"] = "Register";
     Layout = "~/Views/Shared/_CustomLayout.cshtml";
-}*@
+}
 <section class="register py-5">
     <div class="container">
         <div class="row ">
@@ -69,7 +69,7 @@
                             <div class="form-line">
                                 <label asp-for="GovId" class="control-label"></label>
                                 <div class="d-flex">
-                                    <div class="prefix">
+                                    <div class="prefix" style="width:55px">
                                         <select asp-for="GovIdPrefix" class="form-control">
                                             <option selected disabled>---</option>
                                             <option value="AA">AA</option>

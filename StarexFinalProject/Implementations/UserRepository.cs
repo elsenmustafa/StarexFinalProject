@@ -24,13 +24,14 @@ namespace StarexFinalProject.Implementations
         {
             AppUsers users = new AppUsers()
             {
+                UserName=userViewModel.Email,
                 AppUserId=userViewModel.AppUserId,
                 Name=userViewModel.Name,
                 Surname=userViewModel.Surname,
                 Gender=userViewModel.Gender,
                 BirthDate=userViewModel.BirthDate,
                 Adress=userViewModel.Adress,
-                WareHousesId=userViewModel.WareHousesId,
+                WarehouseId=userViewModel.WareHousesId,
                 GovIdPrefix=userViewModel.GovIdPrefix,
                 GovId=userViewModel.GovId,
                 FIN=userViewModel.FIN
@@ -53,9 +54,7 @@ namespace StarexFinalProject.Implementations
                  Gender=AppUserResult.Gender,
                  GovId=AppUserResult.GovId,
                  GovIdPrefix=AppUserResult.GovIdPrefix,
-                 Password=AppUserResult.PasswordHash,
-                 
-                 
+                 Password=AppUserResult.PasswordHash,   
             };
             return await Task.FromResult(userViewModel);
         }
@@ -69,12 +68,6 @@ namespace StarexFinalProject.Implementations
                 signInResult= await _signInManager.PasswordSignInAsync(resultUser, loginViewModel.Password, true, true);
             }
             return signInResult;
-        }
-
-      
-
-       
-
-       
+        } 
     }
 }
