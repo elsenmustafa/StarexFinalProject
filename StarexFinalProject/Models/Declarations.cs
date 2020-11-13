@@ -11,7 +11,7 @@ namespace StarexFinal.Data
         public string Shop { get; set; }
         public int Declaration_Amount { get; set; }
         public decimal Price { get; set; }
-        public  string File { get; set; }
+        public string File { get; set; }
         public int CargoNumber { get; set; }
         public int OrderNumber { get; set; }
         public string Comment { get; set; }
