@@ -17,7 +17,6 @@ namespace StarexFinalProject.Controllers
     public class AccountController : Controller
 
     {
-        private readonly ICountriesRepsotory countriesRepsotory;
         private readonly IUserRepository _userRepository;
         private readonly UserManager<AppUsers> userManager;
         private readonly SignInManager<AppUsers> signInManager;
@@ -51,6 +50,7 @@ namespace StarexFinalProject.Controllers
                 var result = await _userRepository.Create(userViewModel);
                 if (result.Succeeded)
                 {
+                    
                     return RedirectToAction("Index", "Home");
                 }
                 else
@@ -63,6 +63,33 @@ namespace StarexFinalProject.Controllers
             }
             return View();
 
+        }
+        public IActionResult Login()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Login(LoginViewModel loginViewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                var result = await _userRepository.Login(loginViewModel);
+
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("Dashboard", "Home");
+                }
+
+                else
+                {
+
+                    ModelState.AddModelError(string.Empty, "Ugursuz emeliyyat");
+
+                }
+
+            }
+            return View();
         }
 
     }

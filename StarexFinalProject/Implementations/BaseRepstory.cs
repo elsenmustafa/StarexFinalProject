@@ -19,7 +19,6 @@ namespace StarexFinalProject.Implementations
             _starexDbContext.Add<T>(entity);
             return _starexDbContext.SaveChanges() > 0;
         }
-
         public bool Delete(T entity)
         {
             _starexDbContext.Remove<T>(entity);
