@@ -12,7 +12,7 @@ namespace StarexFinalProject.Implementations
     {
         public CountriesRepstory(StarexDbContext starexDbContext) : base(starexDbContext)
         {
-
+         
         }
     }
 }

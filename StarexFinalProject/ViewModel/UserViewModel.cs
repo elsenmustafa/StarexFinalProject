@@ -25,7 +25,7 @@ namespace StarexFinal.ViewModels
         [Required]
         [Display(Name = "Ünvan")]
         public string Adress { get; set; }
-        //[Required]
+        [Required]
         [Display(Name = "Bağlamaları təhvil almaq istədiyiniz filial")]
         public int WareHousesId { get; set; }
         [Required]

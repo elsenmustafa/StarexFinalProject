@@ -12,6 +12,8 @@ using Microsoft.Extensions.Hosting;
 using StarexFinal.Models;
 using StarexFinalProject.Contexts;
 using StarexFinalProject.Core;
+using StarexFinalProject.Implementations;
+using StarexFinalProject.Interfaces;
 
 namespace StarexFinalProject
 {
@@ -28,6 +30,7 @@ namespace StarexFinalProject
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddScoped<IUserRepository, UserRepository>();
             services.CreateIdentity(Configuration);
         }
 
