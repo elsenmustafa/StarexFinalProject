@@ -311,3 +311,11 @@ C:\Users\resid\Source\Repos\elsenmustafa\StarexFinalProject\StarexFinalProject\o
 C:\Users\Code\source\repos\StarexFinalProject\StarexFinalProject\obj\Debug\netcoreapp3.1\StarexFinalProject.csprojAssemblyReference.cache
 C:\Users\Code\source\repos\StarexFinalProject\StarexFinalProject\obj\Debug\netcoreapp3.1\Razor\Views\Account\Login.cshtml.g.cs
 C:\Users\Code\source\repos\StarexFinalProject\StarexFinalProject\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_CustomLayout.cshtml.g.cs
+C:\Users\Code\source\repos\StarexFinalProject\StarexFinalProject\obj\Debug\netcoreapp3.1\Razor\Views\Home\tarif.cshtml.g.cs
+C:\Users\Code\source\repos\StarexFinalProject\StarexFinalProject\obj\Debug\netcoreapp3.1\Razor\Views\Home\Shop.cshtml.g.cs
+C:\Users\Code\source\repos\StarexFinalProject\StarexFinalProject\obj\Debug\netcoreapp3.1\Razor\Views\Home\Contact.cshtml.g.cs
+C:\Users\Code\source\repos\StarexFinalProject\StarexFinalProject\obj\Debug\netcoreapp3.1\Razor\Views\Home\Transportation.cshtml.g.cs
+C:\Users\Code\source\repos\StarexFinalProject\StarexFinalProject\obj\Debug\netcoreapp3.1\Razor\Views\Order\Create.cshtml.g.cs
+C:\Users\Code\source\repos\StarexFinalProject\StarexFinalProject\obj\Debug\netcoreapp3.1\Razor\Views\Home\Adress.cshtml.g.cs
+C:\Users\Code\source\repos\StarexFinalProject\StarexFinalProject\obj\Debug\netcoreapp3.1\Razor\Views\Home\Orders.cshtml.g.cs
+C:\Users\Code\source\repos\StarexFinalProject\StarexFinalProject\obj\Debug\netcoreapp3.1\Razor\Views\Declaration\Create.cshtml.g.cs

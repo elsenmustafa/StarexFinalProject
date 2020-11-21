@@ -9,8 +9,6 @@ namespace StarexFinal.ViewModels
     public class UserViewModel
     {
         [Required]
-        public int AppUserId { get; set; }
-        [Required]
         [Display(Name= "Ad (ingilis hərflərilə)")]
         public string Name { get; set; }
         [Required]

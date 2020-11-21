@@ -51,7 +51,7 @@ namespace StarexFinalProject.Controllers
                 if (result.Succeeded)
                 {
                     
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Login", "Account");
                 }
                 else
                 {
@@ -78,7 +78,7 @@ namespace StarexFinalProject.Controllers
 
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("Dashboard", "Home");
+                    return RedirectToAction("Index", "Home");
                 }
 
                 else

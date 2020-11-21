@@ -17,12 +17,34 @@ namespace StarexFinalProject.Controllers
         {
             _logger = logger;
         }
-
+        public IActionResult Adress()
+        {
+            return View();
+        }
+        public IActionResult Orders()
+        {
+            return View();
+        }
         public IActionResult Index()
         {
             return View();
         }
-
+        public IActionResult Tarif()
+        {
+            return View();
+        }
+        public IActionResult Shop()
+        {
+            return View();
+        }
+        public IActionResult Contact()
+        {
+            return View();
+        }
+        public IActionResult Transportation()
+        {
+            return View();
+        }
         public IActionResult Privacy()
         {
             return View();

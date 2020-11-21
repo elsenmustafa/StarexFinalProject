@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StarexFinal.Data;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -13,5 +14,6 @@ namespace StarexFinal.Models
         public int Id { get; set; }
         [Required]
         public string Name { get; set; }
+        public ICollection<Declarations> Declarations { get; set; }
     }
 }

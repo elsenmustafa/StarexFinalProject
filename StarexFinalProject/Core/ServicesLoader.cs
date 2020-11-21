@@ -24,9 +24,19 @@ namespace StarexFinalProject.Core
             services.AddDbContext<StarexDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("StarexProject")));
 
             services.AddDbContext<StarexDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("StarexProject")));
-            services.AddIdentity<AppUsers, IdentityRole>()
-                .AddEntityFrameworkStores<StarexDbContext>()
-                .AddDefaultTokenProviders();
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IOrderRepository, OrderRepository>();
+            services.AddScoped<IDeclarationRepository, DeclarationRepository>();
+            services.AddScoped<IDeclarationsStatusRepository, DeclarationsStatusRepository>();
+            services.AddIdentity<AppUsers, IdentityRole>(
+                option =>
+                {
+                    option.Password.RequireUppercase = false;
+                    option.Password.RequireNonAlphanumeric = false;
+
+
+                }).AddEntityFrameworkStores<StarexDbContext>();
+            services.AddScoped<IUserRepository, UserRepository>();
 
         }
     }

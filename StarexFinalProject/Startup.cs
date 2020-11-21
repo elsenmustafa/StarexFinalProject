@@ -30,7 +30,6 @@ namespace StarexFinalProject
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddScoped<IUserRepository, UserRepository>();
             services.CreateIdentity(Configuration);
         }
 

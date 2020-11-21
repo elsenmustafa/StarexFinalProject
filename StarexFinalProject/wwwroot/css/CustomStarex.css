@@ -2,7 +2,6 @@
     font-family: "Roboto Regular";
     src: url(../css/Roboto/Roboto-Regular.ttf);
 }
-
 body {
     font-family: "Roboto Regular";
 }
@@ -56,7 +55,9 @@ body {
     font-family: "Roboto Regular";
     font-size: 14px;
 }
-
+.login-menu>li>a {
+    color: rgb(102 102 102) !important;
+}
     .login > li > a:hover {
         color: #005FB5;
     }
@@ -981,7 +982,8 @@ a:hover {
     background-color: rgb(255 255 255) !important;
     border: 1px solid rgb(222 226 230);
 }
-/*******************Register Form******************/
+
+
 .form-submit input {
     padding: 17px 0;
     font: 14px/16px Roboto-Regular;
@@ -1132,4 +1134,11 @@ ul.dropdown li {
     position: absolute;
     left: 20px;
     top: -5px;
+}
+.select-dec{
+    text-align:center;
+}
+.country-btns > a {
+    width: 170px;
+    transition: all .3s;
 }

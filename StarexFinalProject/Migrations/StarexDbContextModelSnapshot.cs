@@ -189,17 +189,9 @@ namespace StarexFinalProject.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("AppUsersId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("CargoNumber")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("CategoryId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Comment")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(120)")
+                        .HasMaxLength(120);
 
                     b.Property<int?>("CountriesId")
                         .HasColumnType("int");
@@ -207,34 +199,68 @@ namespace StarexFinalProject.Migrations
                     b.Property<int>("CountryId")
                         .HasColumnType("int");
 
-                    b.Property<int>("Declaration_Amount")
-                        .HasColumnType("int");
+                    b.Property<DateTime>("DeclarationDate")
+                        .HasColumnType("datetime2");
 
-                    b.Property<string>("File")
+                    b.Property<string>("DeliveryCode")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("OrderNumber")
-                        .HasColumnType("int");
+                    b.Property<string>("FileName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal>("Price")
+                    b.Property<bool>("LiquidOrNot")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("OrderNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("ProductPrice")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<int>("ProductCategoryId")
+                    b.Property<string>("ProductType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("ProductWeight")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("Quantity")
                         .HasColumnType("int");
 
+                    b.Property<decimal>("ShippingPrice")
+                        .HasColumnType("decimal(18,2)");
+
                     b.Property<string>("Shop")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("StatusId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("TrackingCode")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<int?>("WarehouseId")
                         .HasColumnType("int");
 
+                    b.Property<int>("Warehouse_Id")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("AppUsersId");
-
-                    b.HasIndex("CategoryId");
-
                     b.HasIndex("CountriesId");
+
+                    b.HasIndex("StatusId");
+
+                    b.HasIndex("UserId");
 
                     b.HasIndex("WarehouseId");
 
@@ -321,9 +347,6 @@ namespace StarexFinalProject.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("Amount")
-                        .HasColumnType("int");
-
                     b.Property<decimal>("Cargo_Price")
                         .HasColumnType("decimal(18,2)");
 
@@ -339,17 +362,29 @@ namespace StarexFinalProject.Migrations
                     b.Property<int>("CountryId")
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("CreatTime")
+                        .HasColumnType("datetime2");
+
                     b.Property<int?>("OrderStatusId")
                         .HasColumnType("int");
 
-                    b.Property<decimal>("Price")
+                    b.Property<decimal>("ProductPrice")
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("ProductSize")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.Property<int>("StatusId")
+                        .HasColumnType("int");
+
                     b.Property<decimal>("Total_Price")
                         .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("TrackingCode")
+                        .HasColumnType("int");
 
                     b.Property<string>("Url")
                         .HasColumnType("nvarchar(max)");
@@ -379,9 +414,6 @@ namespace StarexFinalProject.Migrations
                     b.Property<string>("Adress")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("AppUserId")
-                        .HasColumnType("int");
 
                     b.Property<DateTime>("BirthDate")
                         .HasColumnType("datetime2");
@@ -843,19 +875,23 @@ namespace StarexFinalProject.Migrations
 
             modelBuilder.Entity("StarexFinal.Data.Declarations", b =>
                 {
-                    b.HasOne("StarexFinal.Models.AppUsers", null)
-                        .WithMany("Declarations")
-                        .HasForeignKey("AppUsersId");
-
-                    b.HasOne("StarexFinal.Data.FormCategory", "Category")
-                        .WithMany()
-                        .HasForeignKey("CategoryId");
-
-                    b.HasOne("StarexFinal.Data.Countries", "Countries")
+                    b.HasOne("StarexFinal.Data.Countries", null)
                         .WithMany("Declarations")
                         .HasForeignKey("CountriesId");
 
-                    b.HasOne("StarexFinalProject.Models.Warehouse", null)
+                    b.HasOne("StarexFinal.Models.DeclarationsStatus", "Status")
+                        .WithMany("Declarations")
+                        .HasForeignKey("StatusId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("StarexFinal.Models.AppUsers", "User")
+                        .WithMany("Declarations")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("StarexFinalProject.Models.Warehouse", "Warehouse")
                         .WithMany("Declarations")
                         .HasForeignKey("WarehouseId");
                 });
@@ -866,7 +902,7 @@ namespace StarexFinalProject.Migrations
                         .WithMany("Orders")
                         .HasForeignKey("CountriesId");
 
-                    b.HasOne("StarexFinalProject.Models.OrderStatus", null)
+                    b.HasOne("StarexFinalProject.Models.OrderStatus", "OrderStatus")
                         .WithMany("Orders")
                         .HasForeignKey("OrderStatusId");
 
