@@ -22,52 +22,49 @@ namespace StarexFinalProject.Implementations
         }
         public async Task<IdentityResult> Create(UserViewModel userViewModel)
         {
-            AppUsers users = new AppUsers()
+            AppUsers user = new AppUsers()
             {
-                UserName=userViewModel.Email,
-                AppUserId=userViewModel.AppUserId,
                 Name=userViewModel.Name,
-                Surname=userViewModel.Surname,
-                Gender=userViewModel.Gender,
-                BirthDate=userViewModel.BirthDate,
-                Adress=userViewModel.Adress,
-                WarehouseId=userViewModel.WareHousesId,
-                GovIdPrefix=userViewModel.GovIdPrefix,
-                GovId=userViewModel.GovId,
-                FIN=userViewModel.FIN
+                UserName = userViewModel.Email, 
+                Surname = userViewModel.Surname,
+                Gender = userViewModel.Gender,
+                BirthDate = userViewModel.BirthDate,
+                Adress = userViewModel.Adress,
+                WarehouseId = userViewModel.WareHousesId,
+                GovIdPrefix = userViewModel.GovIdPrefix,
+                GovId = userViewModel.GovId,
+                FIN = userViewModel.FIN
             };
-            return await _userManager.CreateAsync(users);
-     
+
+            return await _userManager.CreateAsync(user,userViewModel.Password);
         }
 
         public async Task<UserViewModel> GetById(string id)
         {
-           var AppUserResult= await _userManager.FindByIdAsync(id);
+            var AppUserResult = await _userManager.FindByIdAsync(id);
             UserViewModel userViewModel = new UserViewModel
             {
-                 Adress=AppUserResult.Adress,
-                 Name=AppUserResult.Name,
-                 Email=AppUserResult.Email,
-                 Surname=AppUserResult.Surname,
-                 BirthDate=AppUserResult.BirthDate,
-                 FIN=AppUserResult.FIN,
-                 Gender=AppUserResult.Gender,
-                 GovId=AppUserResult.GovId,
-                 GovIdPrefix=AppUserResult.GovIdPrefix,
-                 Password=AppUserResult.PasswordHash,   
+                Adress = AppUserResult.Adress,
+                Name = AppUserResult.Name,
+                Email = AppUserResult.Email,
+                Surname = AppUserResult.Surname,
+                BirthDate = AppUserResult.BirthDate,
+                FIN = AppUserResult.FIN,
+                Gender = AppUserResult.Gender,
+                GovId = AppUserResult.GovId,
+                GovIdPrefix = AppUserResult.GovIdPrefix,
+                Password = AppUserResult.PasswordHash,
             };
             return await Task.FromResult(userViewModel);
         }
 
         public async Task<SignInResult> Login(LoginViewModel loginViewModel)
         {
-            SignInResult signInResult=null;
-            var resultUser = await _userManager.FindByEmailAsync(loginViewModel.Email);
-            if (resultUser!=null)
-            {
-                signInResult= await _signInManager.PasswordSignInAsync(resultUser, loginViewModel.Password, true, true);
-            }
+            var signInResult = await _signInManager.PasswordSignInAsync(
+                loginViewModel.Email, loginViewModel.Password, false, false);
+
             return signInResult;
-        } 
+            
+        }
     }
 }

@@ -8,6 +8,6 @@ namespace StarexFinalProject.Interfaces
 {
    public interface ICountriesRepsotory:IBaseRepstory<Countries>
     {
-
+        
     }
 }
